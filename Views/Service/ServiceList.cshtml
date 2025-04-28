@@ -1,0 +1,30 @@
+﻿@model List<Service>
+@{
+    ViewData["Title"] = "ServiceList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h1>Hizmet Listesi</h1>
+
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Hizmet Türü</th>
+        <th>Ikon</th>
+        <th>Açıklama</th>
+        <th>Güncelle</th>
+        <th>Sil</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ServideId</td>
+            <td>@item.ServiceTitle</td>
+            <td>@item.ServiceIcon</td>
+            <td>@item.ServiceDescription</td>
+            <td><a href="/Service/UpdateService/@item.ServideId" class="btn btn-info">Güncelle</a></td>
+            <td><a href="/Service/DeleteService/@item.ServideId" class="btn btn-danger">Sil</a></td>
+        </tr>
+    }
+</table>
+<a href="/Service/AddService/" class="btn btn-primary">Yeni Hizmet Girişi Yap</a>
